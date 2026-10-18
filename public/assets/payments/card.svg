@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <circle cx="50" cy="50" r="50" fill="#2563eb"/>
+  <g transform="translate(18, 25)">
+    <!-- Credit Card -->
+    <rect x="0" y="0" width="64" height="46" rx="7" fill="#ffffff" />
+    <!-- Magnetic stripe -->
+    <rect x="0" y="9" width="64" height="9" fill="#1e3a8a"/>
+    <!-- Chip -->
+    <rect x="8" y="23" width="12" height="9" rx="2" fill="#f59e0b"/>
+    <!-- Embossed Card Lines -->
+    <rect x="24" y="26" width="28" height="3.5" rx="1.5" fill="#64748b"/>
+    <rect x="8" y="36" width="34" height="3" rx="1.5" fill="#94a3b8"/>
+    <!-- Card Brand mark -->
+    <circle cx="50" cy="37" r="4.5" fill="#ef4444" opacity="0.9"/>
+    <circle cx="55" cy="37" r="4.5" fill="#f59e0b" opacity="0.9"/>
+  </g>
+</svg>

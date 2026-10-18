@@ -1,0 +1,765 @@
+/* =========================================================
+   OHANA MAKIS & BUSINESS SUITE - REPORTES Y ESTADÍSTICAS
+   Inspirado en el diseño "Profit and Loss / Invoices & Bills"
+   ========================================================= */
+
+.pnl-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 8px 4px 32px 4px;
+  font-family: var(--font-family, 'Outfit', 'Plus Jakarta Sans', sans-serif);
+  color: #1e293b;
+  animation: pnlFadeIn 0.3s ease-in-out;
+}
+
+@keyframes pnlFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   HEADER SECTION
+   ========================================================= */
+.pnl-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.pnl-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.pnl-back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pnl-back-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.pnl-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.pnl-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.pnl-subtitle {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+/* Filtros Pills */
+.pnl-filters-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pnl-dropdown-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.pnl-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 8px 32px 8px 14px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.pnl-select:hover {
+  border-color: #cbd5e1;
+  background-color: #f8fafc;
+}
+
+.pnl-select:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.pnl-select-chevron {
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+  color: #64748b;
+}
+
+.pnl-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pnl-btn-export {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1.5px solid #d8b4fe;
+  color: #7c3aed;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(124, 58, 237, 0.08);
+}
+
+.pnl-btn-export:hover {
+  background: #faf5ff;
+  border-color: #a855f7;
+  color: #6d28d9;
+  transform: translateY(-1px);
+}
+
+.pnl-business-mode-toggle {
+  display: flex;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 3px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.pnl-mode-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pnl-mode-btn.active {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================================
+   TOP 4 KPI CARDS
+   ========================================================= */
+.pnl-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .pnl-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .pnl-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pnl-kpi-card {
+  border-radius: 16px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pnl-kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Colores pasteles específicos del diseño de referencia */
+.pnl-card-revenue {
+  background: linear-gradient(180deg, #f4fbf7 0%, #ecfdf5 100%);
+  border-color: #d1fae5;
+}
+
+.pnl-card-expenses {
+  background: linear-gradient(180deg, #fffbf9 0%, #fff7ed 100%);
+  border-color: #ffedd5;
+}
+
+.pnl-card-profit {
+  background: linear-gradient(180deg, #fdf8fb 0%, #fdf2f8 100%);
+  border-color: #fce7f3;
+}
+
+.pnl-card-margin {
+  background: linear-gradient(180deg, #f8faff 0%, #eff6ff 100%);
+  border-color: #dbeafe;
+}
+
+.pnl-kpi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+.pnl-kpi-icon-pill {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.icon-purple {
+  background-color: #8b5cf6;
+  color: #ffffff;
+}
+
+.icon-pink {
+  background-color: #ec4899;
+  color: #ffffff;
+}
+
+.icon-magenta {
+  background-color: #d946ef;
+  color: #ffffff;
+}
+
+.pnl-kpi-value {
+  font-size: 2.15rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+/* =========================================================
+   MIDDLE SECTION: CHART + INCOME + EXPENSES
+   ========================================================= */
+.pnl-middle-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.25fr 1.25fr;
+  gap: 20px;
+}
+
+@media (max-width: 1200px) {
+  .pnl-middle-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pnl-box {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f1f5f9;
+  padding: 22px 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Gráfico */
+.pnl-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.pnl-chart-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.pnl-chart-metric-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.pnl-chart-metric {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.pnl-trend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.trend-up {
+  background: #e0e7ff;
+  color: #4f46e5;
+}
+
+.trend-down {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.pnl-chart-filter-select {
+  appearance: none;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 6px 28px 6px 12px;
+  font-size: 0.8rem;
+  color: #475569;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Visualización Gráfico de Barras Elegante */
+.pnl-chart-canvas-wrap {
+  display: flex;
+  gap: 12px;
+  height: 250px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.pnl-chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-weight: 500;
+  text-align: right;
+  min-width: 48px;
+  user-select: none;
+}
+
+.pnl-chart-bars-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex: 1;
+  position: relative;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Guías horizontales sutiles */
+.pnl-chart-gridlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.pnl-gridline {
+  border-top: 1px dashed #f1f5f9;
+  width: 100%;
+}
+
+.pnl-bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  justify-content: flex-end;
+  flex: 1;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.pnl-bar-stack {
+  width: 70%;
+  max-width: 24px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  position: relative;
+  border-radius: 4px 4px 0 0;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.pnl-bar-col:hover .pnl-bar-stack {
+  transform: scaleY(1.02);
+  filter: brightness(0.97);
+}
+
+.pnl-bar-bottom-expense {
+  width: 100%;
+  background: linear-gradient(180deg, #ffedd5 0%, #fff7ed 100%);
+  border-top: 2px solid #fdba74;
+  border-radius: 2px 2px 0 0;
+  transition: height 0.4s ease-out;
+}
+
+.pnl-bar-top-profit {
+  width: 100%;
+  background: linear-gradient(180deg, #dcfce7 0%, #ecfdf5 100%);
+  border-top: 2px solid #86efac;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.4s ease-out;
+}
+
+.pnl-bar-col.active .pnl-bar-top-profit {
+  border-top: 2.5px solid #22c55e;
+}
+
+.pnl-bar-col.active .pnl-bar-bottom-expense {
+  border-top: 2.5px solid #f97316;
+}
+
+.pnl-bar-label {
+  position: absolute;
+  bottom: -24px;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.pnl-bar-col.active .pnl-bar-label {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Tooltip sobre barras */
+.pnl-bar-tooltip {
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.15s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.pnl-bar-col:hover .pnl-bar-tooltip {
+  opacity: 1;
+  visibility: visible;
+  bottom: calc(100% + 8px);
+}
+
+/* Tarjetas de Ingresos y Gastos (Income & Expense Tables) */
+.pnl-side-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.pnl-side-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.pnl-side-metric-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.pnl-side-metric {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.pnl-side-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 14px;
+  flex: 1;
+}
+
+.pnl-side-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  color: #475569;
+  padding: 4px 0;
+  border-bottom: 1px solid #f8fafc;
+  transition: color 0.15s ease;
+}
+
+.pnl-side-item:hover {
+  color: #0f172a;
+}
+
+.pnl-side-name {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pnl-side-value {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* =========================================================
+   BOTTOM SECTION: INVOICES & BILLS TABLE
+   ========================================================= */
+.pnl-table-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f1f5f9;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.pnl-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pnl-table-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.pnl-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.pnl-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+}
+
+.pnl-table th {
+  padding: 12px 16px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: capitalize;
+  border-bottom: 1px solid #f1f5f9;
+  letter-spacing: 0.01em;
+}
+
+.pnl-table td {
+  padding: 16px 16px;
+  font-size: 0.86rem;
+  color: #334155;
+  border-bottom: 1px solid #f8fafc;
+  vertical-align: middle;
+}
+
+.pnl-table tr:last-child td {
+  border-bottom: none;
+}
+
+.pnl-table tr:hover td {
+  background-color: #fafbfc;
+}
+
+/* Columna Empresa con Avatar / Logo */
+.pnl-company-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.pnl-company-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.logo-google {
+  background: #ffffff;
+  color: #4285f4;
+  border: 1px solid #e2e8f0;
+}
+
+.logo-flipkart {
+  background: #2874f0;
+  color: #ffd814;
+}
+
+.logo-spotify {
+  background: #1ed760;
+  color: #000000;
+}
+
+.logo-ohana {
+  background: #f97316;
+  color: #ffffff;
+}
+
+.logo-rappi {
+  background: #ff441f;
+  color: #ffffff;
+}
+
+.pnl-invoice-id {
+  font-family: inherit;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.pnl-customer-name {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.pnl-service-name {
+  color: #64748b;
+}
+
+.pnl-amount {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.pnl-date {
+  color: #64748b;
+  white-space: nowrap;
+}
+
+/* Estados */
+.pnl-status-pill {
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-paid {
+  color: #10b981;
+}
+
+.status-pending {
+  color: #eab308;
+}
+
+.status-overdue {
+  color: #f87171;
+}
+
+/* Modal de Exportación / Toast feedback */
+.pnl-export-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  animation: pnlSlideUp 0.3s ease;
+}
+
+@keyframes pnlSlideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

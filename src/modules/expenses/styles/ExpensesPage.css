@@ -1,0 +1,610 @@
+/* ==========================================================================
+   OHANA RESTOBAR - CONTROL DE GASTOS OPERATIVOS
+   Diseño Compacto, Formal y Corporativo (Estilo Contable / ERP)
+   ========================================================================== */
+
+/* Cabecera del módulo compacta y formal */
+.expenses-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.expenses-title-wrap .expenses-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.015em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.expenses-title-wrap .expenses-subtitle {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+/* Acciones superiores compactas */
+.expenses-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Stepper de Mes Compacto */
+.expenses-month-stepper {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  padding: 2px 4px;
+  height: 34px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.expenses-month-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.expenses-month-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.expenses-month-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1e293b;
+  padding: 0 10px;
+  min-width: 125px;
+  text-align: center;
+  user-select: none;
+}
+
+/* Botón Exportar Excel Formal */
+.btn-export-excel-formal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  color: #166534;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-export-excel-formal:hover {
+  background: #f0fdf4;
+  border-color: #86efac;
+  color: #15803d;
+}
+
+/* Botón Nuevo Gasto Formal y Compacto */
+.btn-new-expense-formal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  background: #ea580c;
+  border: 1px solid #ea580c;
+  border-radius: 7px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(234, 88, 12, 0.2);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-new-expense-formal:hover {
+  background: #c2410c;
+  border-color: #c2410c;
+  box-shadow: 0 2px 4px rgba(234, 88, 12, 0.25);
+}
+
+/* ================= KPI CARDS (Compactas, Sobrias y Formales) ================= */
+.expenses-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.expenses-kpi-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 82px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.expenses-kpi-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.expenses-kpi-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.expenses-kpi-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.expenses-kpi-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Variantes sobrias de icono */
+.kpi-total .expenses-kpi-badge {
+  background: #fee2e2;
+  color: #dc2626;
+}
+.kpi-total .expenses-kpi-amount {
+  color: #dc2626;
+}
+
+.kpi-servicios .expenses-kpi-badge {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+.kpi-servicios .expenses-kpi-amount {
+  color: #0f172a;
+}
+
+.kpi-compras .expenses-kpi-badge {
+  background: #e0f7fa;
+  color: #0891b2;
+}
+.kpi-compras .expenses-kpi-amount {
+  color: #0f172a;
+}
+
+.kpi-local .expenses-kpi-badge {
+  background: #f1f5f9;
+  color: #475569;
+}
+.kpi-local .expenses-kpi-amount {
+  color: #0f172a;
+}
+
+.kpi-personal .expenses-kpi-badge {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+.kpi-personal .expenses-kpi-amount {
+  color: #0f172a;
+}
+
+.expenses-kpi-amount {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 4px;
+  margin-bottom: 1px;
+  line-height: 1.2;
+}
+
+.expenses-kpi-sub {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 1200px) {
+  .expenses-kpi-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .expenses-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================= BARRA DE FILTROS Y BÚSQUEDA COMPACTA ================= */
+.expenses-toolbar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 0.85rem;
+}
+
+.expenses-category-filters {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.cat-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.38rem 0.85rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  color: #334155;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.cat-filter-icon {
+  flex-shrink: 0;
+  color: #64748b;
+  transition: color 0.15s ease;
+}
+
+.cat-filter-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.cat-filter-btn:hover .cat-filter-icon {
+  color: #0f172a;
+}
+
+/* Estado activo: Píldora azul sólida con texto e icono blanco */
+.cat-filter-btn.active {
+  background: #0047b3;
+  border-color: #0047b3;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 71, 179, 0.25);
+}
+
+.cat-filter-btn.active .cat-filter-icon {
+  color: #ffffff;
+}
+
+.cat-filter-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0 6px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #f1f5f9;
+  color: #64748b;
+  transition: all 0.15s ease;
+}
+
+.cat-filter-btn.active .cat-filter-badge {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+
+/* Buscador Compacto y Formal */
+.expenses-search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 250px;
+}
+
+.expenses-search-ico {
+  position: absolute;
+  left: 10px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.expenses-search-box-input {
+  width: 100%;
+  height: 32px;
+  padding: 0 10px 0 32px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #0f172a;
+  outline: none;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.expenses-search-box-input:focus {
+  border-color: #64748b;
+  box-shadow: 0 0 0 2px rgba(100, 116, 139, 0.12);
+}
+
+.expenses-search-box-input::placeholder {
+  color: #94a3b8;
+  font-size: 0.78rem;
+}
+
+/* ================= TABLA ESTILO CONTABLE / ERP FORMAL ================= */
+.expenses-table-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.expenses-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.expenses-table th {
+  background: #f8fafc;
+  padding: 9px 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.expenses-table td {
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.expenses-table tr:last-child td {
+  border-bottom: none;
+}
+
+.expenses-table tr:hover td {
+  background-color: #f8fafc;
+}
+
+/* Código formal */
+.expenses-code {
+  font-family: inherit;
+  font-weight: 600;
+  color: #475569;
+  font-size: 0.8rem;
+}
+
+/* Categorías Pill más sobrias */
+.expenses-cat-pill {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.expenses-cat-compras {
+  background: #ecfeff;
+  color: #0e7490;
+  border: 1px solid #cffafe;
+}
+
+.expenses-cat-servicios {
+  background: #f0f9ff;
+  color: #0369a1;
+  border: 1px solid #e0f2fe;
+}
+
+.expenses-cat-local {
+  background: #f8fafc;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}
+
+.expenses-cat-personal {
+  background: #faf5ff;
+  color: #7e22ce;
+  border: 1px solid #f3e8ff;
+}
+
+.expenses-cat-otros {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+/* Acciones en tabla */
+.expenses-action-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.expenses-action-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.expenses-action-btn.delete:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Estado Vacío Formal y Compacto */
+.expenses-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.25rem 1rem;
+  gap: 6px;
+  color: #64748b;
+}
+
+.expenses-empty-icon {
+  color: #94a3b8;
+  margin-bottom: 2px;
+}
+
+.expenses-empty-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.expenses-empty-desc {
+  font-size: 0.78rem;
+  color: #64748b;
+  text-align: center;
+  max-width: 420px;
+}
+
+/* ================= MODAL FORMULARIO ================= */
+.expense-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.expense-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.expense-form-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.expense-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.expense-form-input,
+.expense-form-select,
+.expense-form-textarea {
+  width: 100%;
+  padding: 7px 10px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  color: #0f172a;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+}
+
+.expense-form-input:focus,
+.expense-form-select:focus,
+.expense-form-textarea:focus {
+  border-color: #ea580c;
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.12);
+}
+
+.expense-amount-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.expense-currency-prefix {
+  position: absolute;
+  left: 10px;
+  font-weight: 600;
+  color: #64748b;
+  font-size: 0.82rem;
+  pointer-events: none;
+}
+
+.expense-amount-input-wrapper .expense-form-input {
+  padding-left: 36px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #ea580c;
+}
+
+.expense-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .expenses-toolbar-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .expenses-search-container {
+    min-width: 100%;
+  }
+  .expense-form-row {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,278 @@
+/* ========================================================
+   FULL PAGE LOADER - OHANA MAKIS (PULSE LOGO & DARK CHARCOAL)
+   ======================================================== */
+
+.ohana-fullpage-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: radial-gradient(circle at center, #172134 0%, #0b0f19 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+.ohana-loader-pulse-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+}
+
+/* Concentric Ripple Waves */
+.ohana-loader-ripple-1,
+.ohana-loader-ripple-2,
+.ohana-loader-ripple-3 {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ohana-loader-ripple-1 {
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.28) 0%, rgba(249, 115, 22, 0) 70%);
+  animation: ohanaWave 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.ohana-loader-ripple-2 {
+  background: radial-gradient(circle, rgba(234, 88, 12, 0.22) 0%, rgba(234, 88, 12, 0) 70%);
+  animation: ohanaWave 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  animation-delay: 0.8s;
+}
+
+.ohana-loader-ripple-3 {
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.16) 0%, rgba(249, 115, 22, 0) 70%);
+  animation: ohanaWave 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  animation-delay: 1.6s;
+}
+
+/* Rotating subtle orbital ring */
+.ohana-loader-orbit {
+  position: absolute;
+  width: 136px;
+  height: 136px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: rgba(249, 115, 22, 0.75);
+  border-right-color: rgba(249, 115, 22, 0.25);
+  animation: ohanaSpin 1.8s linear infinite;
+}
+
+/* Logo Image Container with Breathing Pulse */
+.ohana-loader-logo-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  padding: 4px;
+  background: rgba(11, 15, 25, 0.85);
+  border: 2px solid rgba(249, 115, 22, 0.5);
+  box-shadow: 
+    0 0 30px rgba(249, 115, 22, 0.35),
+    inset 0 0 15px rgba(249, 115, 22, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: ohanaBreathing 2.2s ease-in-out infinite;
+}
+
+.ohana-loader-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+}
+
+/* Footer / Loading label */
+.ohana-loader-text-wrapper {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  z-index: 2;
+}
+
+.ohana-loader-text {
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  animation: ohanaFadeText 1.8s ease-in-out infinite alternate;
+}
+
+/* Sleek indeterminate progress track */
+.ohana-loader-track {
+  width: 130px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ohana-loader-track-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, #f97316, #fb923c, transparent);
+  border-radius: 999px;
+  animation: ohanaProgress 1.6s ease-in-out infinite;
+}
+
+/* Keyframe Animations */
+@keyframes ohanaBreathing {
+  0%, 100% {
+    transform: scale(0.96);
+    box-shadow: 
+      0 0 20px rgba(249, 115, 22, 0.25),
+      inset 0 0 10px rgba(249, 115, 22, 0.1);
+    border-color: rgba(249, 115, 22, 0.35);
+  }
+  50% {
+    transform: scale(1.07);
+    box-shadow: 
+      0 0 45px rgba(249, 115, 22, 0.6),
+      inset 0 0 20px rgba(249, 115, 22, 0.3);
+    border-color: rgba(249, 115, 22, 0.9);
+  }
+}
+
+@keyframes ohanaWave {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.3);
+    opacity: 0;
+  }
+}
+
+@keyframes ohanaSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ohanaFadeText {
+  0% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 1;
+    color: #f8fafc;
+  }
+}
+
+@keyframes ohanaProgress {
+  0% {
+    left: -45%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* ========================================================
+   TEMAS DE COLOR DE PANTALLA DE CARGA
+   1. default: Determinado (Azul Marino Profundo con Naranja Maki)
+   2. black-red: Negro con Rojo
+   3. cyan-white: Celeste y Blanco
+   ======================================================== */
+
+/* TEMA 2: NEGRO CON ROJO */
+.ohana-fullpage-loader.loader-theme-black-red,
+[data-loader-theme='black-red'] .ohana-fullpage-loader {
+  background: radial-gradient(circle at center, #1a0505 0%, #000000 100%) !important;
+}
+
+.ohana-fullpage-loader.loader-theme-black-red .ohana-loader-ripple-1 {
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.35) 0%, rgba(239, 68, 68, 0) 70%) !important;
+}
+
+.ohana-fullpage-loader.loader-theme-black-red .ohana-loader-ripple-2 {
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.28) 0%, rgba(220, 38, 38, 0) 70%) !important;
+}
+
+.ohana-fullpage-loader.loader-theme-black-red .ohana-loader-ripple-3 {
+  background: radial-gradient(circle, rgba(185, 28, 28, 0.22) 0%, rgba(185, 28, 28, 0) 70%) !important;
+}
+
+.ohana-fullpage-loader.loader-theme-black-red .ohana-loader-orbit {
+  border-top-color: #ef4444 !important;
+  border-right-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+.ohana-fullpage-loader.loader-theme-black-red .ohana-loader-logo-wrapper {
+  background: rgba(10, 2, 2, 0.9) !important;
+  border-color: rgba(239, 68, 68, 0.6) !important;
+  box-shadow: 0 0 35px rgba(239, 68, 68, 0.45), inset 0 0 15px rgba(239, 68, 68, 0.25) !important;
+}
+
+.ohana-fullpage-loader.loader-theme-black-red .ohana-loader-text {
+  color: #fca5a5 !important;
+}
+
+.ohana-fullpage-loader.loader-theme-black-red .ohana-loader-track-bar {
+  background: linear-gradient(90deg, transparent, #ef4444, #f87171, transparent) !important;
+}
+
+/* TEMA 3: CELESTE Y BLANCO */
+.ohana-fullpage-loader.loader-theme-cyan-white,
+[data-loader-theme='cyan-white'] .ohana-fullpage-loader {
+  background: radial-gradient(circle at center, #ffffff 0%, #e0f2fe 55%, #bae6fd 100%) !important;
+}
+
+.ohana-fullpage-loader.loader-theme-cyan-white .ohana-loader-ripple-1 {
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.35) 0%, rgba(14, 165, 233, 0) 70%) !important;
+}
+
+.ohana-fullpage-loader.loader-theme-cyan-white .ohana-loader-ripple-2 {
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, rgba(56, 189, 248, 0) 70%) !important;
+}
+
+.ohana-fullpage-loader.loader-theme-cyan-white .ohana-loader-ripple-3 {
+  background: radial-gradient(circle, rgba(125, 211, 252, 0.22) 0%, rgba(125, 211, 252, 0) 70%) !important;
+}
+
+.ohana-fullpage-loader.loader-theme-cyan-white .ohana-loader-orbit {
+  border-top-color: #0284c7 !important;
+  border-right-color: rgba(14, 165, 233, 0.35) !important;
+}
+
+.ohana-fullpage-loader.loader-theme-cyan-white .ohana-loader-logo-wrapper {
+  background: #ffffff !important;
+  border-color: rgba(14, 165, 233, 0.7) !important;
+  box-shadow: 0 0 35px rgba(14, 165, 233, 0.35), inset 0 0 15px rgba(224, 242, 254, 0.6) !important;
+}
+
+.ohana-fullpage-loader.loader-theme-cyan-white .ohana-loader-track {
+  background: rgba(14, 165, 233, 0.15) !important;
+}
+
+.ohana-fullpage-loader.loader-theme-cyan-white .ohana-loader-text {
+  color: #0369a1 !important;
+}
+
+.ohana-fullpage-loader.loader-theme-cyan-white .ohana-loader-track-bar {
+  background: linear-gradient(90deg, transparent, #0284c7, #38bdf8, transparent) !important;
+}
+
